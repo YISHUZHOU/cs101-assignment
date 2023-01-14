@@ -8,13 +8,17 @@ class Test1():
         self.a = a  # 实例属性
         self.b = b
 
-    def lee():
-        pass
+    def lee(self, p=2):
+        c = 1000
+        print(locals())  # 当前函数局部命名空间
+        # print(globals())#当前模块命名空间
+        return "--------------------"
 
 
-print(Test1(1, 2))  # Test1的实例
-print(type(Test1(1, 2)))  # 查看该实例是如何创造的（通过Test1）
-print(Test1(1, 2).__dict__)  # 实例的命名空间
+t1 = Test1(1, 2)
+print(t1)  # Test1的实例
+print(type(t1))  # 查看该实例是如何创造的（通过Test1）
+print(t1.__dict__)  # 实例的命名空间
 print(getattr(Test1, "p"))
 
 
@@ -24,13 +28,16 @@ Test1.newattr = "foo"  # 添加属性
 print(hasattr(Test1, "newattr"))
 print(Test1.newattr)
 
-print(Test1(1, 2).b)  # 实例对象的b属性
-print(Test1(1, 2).__dir__())  # 查看实例的所有属性名和方法，包括继承自object类的
+print(t1.b)  # 实例对象的b属性
+print(t1.__dir__())  # 查看实例的所有属性名和方法，包括继承自object类的
 
 
 # 用type创建
-def lee():
-    pass
+def lee(p=2):
+    c = 1000
+    print(locals())  # 当前函数局部命名空间
+    # print(globals())#当前模块命名空间
+    return "--------------------"
 
 
 Test2 = type('Test2', (), {"p": 100, "lee": lee, "newattr": "foo"})
@@ -39,3 +46,9 @@ t2.a = 1
 t2.b = 2
 print(t2)
 print(t2.__dir__())
+
+
+print(lee())
+print(t1.lee())  # 可以看出来self代表t1这个实例
+print(Test1.lee)
+print(Test1.__dict__)
