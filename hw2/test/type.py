@@ -33,7 +33,7 @@ print(t1.__dir__())  # 查看实例的所有属性名和方法，包括继承自
 
 
 # 用type创建
-def lee(p=2):
+def lee(self,p=2):
     c = 1000
     print(locals())  # 当前函数局部命名空间
     # print(globals())#当前模块命名空间
@@ -48,7 +48,8 @@ print(t2)
 print(t2.__dir__())
 
 
-print(lee())
+print(lee(t1))
 print(t1.lee())  # 可以看出来self代表t1这个实例
+print(t1.lee)
 print(Test1.lee)
 print(Test1.__dict__)
