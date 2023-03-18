@@ -20,4 +20,17 @@ df.to_excel('./test_Docker3_result.xlsx')
 import matplotlib.pyplot as plt
 #把df输出成折线图
 
-df.plot()
+# df.plot()
+#生成一个dataframe，行索引为日期，列索引为商品名称，商品名称为“商品1”和“商品2”，日期为2019-01-01到2019-01-10
+df = pd.DataFrame(np.random.randn(10, 2), index=pd.date_range('2019-01-01', periods=10), columns=list('AB'))
+print(df)
+# 画出df的折线图
+# df.plot()
+import plotly
+import plotly.graph_objs as go
+import plotly.plotly as py
+import plotly.tools as tls
+import plotly.figure_factory as ff
+import plotly.offline as offline
+
+#用plotly画一张df的
